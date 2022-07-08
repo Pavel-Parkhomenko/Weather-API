@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   MainContainerStyled,
   TimeAndEventsContainerStyled,
@@ -6,6 +6,7 @@ import {
 } from './style'
 import { TimePanel } from '@/componets/TimePanel'
 import { EventsPanel } from '@/componets/EventsPanel'
+import { CityPanel } from '@/componets/CityPanel'
 
 export function Main() {
   return (
@@ -15,6 +16,7 @@ export function Main() {
           <TimePanel />
           <EventsPanel />
         </TimeAndEventsContainerStyled>
+        <CityPanel />
       </TopMainContainerStyled>
     </MainContainerStyled>
   )

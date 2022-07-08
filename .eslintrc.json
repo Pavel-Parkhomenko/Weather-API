@@ -32,6 +32,10 @@
         "react/jsx-filename-extension": "off",
         "comma-dangle": "off",
         "react/jsx-curly-brace-presence": "off",
+        "default-param-last": "off",
+        "import/no-extraneous-dependencies": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
         "import/extensions": [
             "off",
             "ignorePackages",

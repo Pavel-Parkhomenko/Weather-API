@@ -47,7 +47,7 @@ export function TimePanel() {
       </TimeStyled>
       <TextStyled> pm </TextStyled>
       <div>
-        <TextStyled>{`${Days[dateNow.day]}, ${dateNow.date} ${Months[dateNow.month]} ${dateNow.year}`}</TextStyled>
+        <TextStyled>{`${Days[dateNow.day - 1]}, ${dateNow.date} ${Months[dateNow.month]} ${dateNow.year}`}</TextStyled>
       </div>
     </TimeContainerStyled>
   )

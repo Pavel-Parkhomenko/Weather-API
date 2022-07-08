@@ -17,4 +17,5 @@ export const TimeAndEventsContainerStyled = styled.div`
 export const TopMainContainerStyled = styled.div`
   display: flex;
   padding: 10% 10% 0 10%;
+  justify-content: space-between;
 `
