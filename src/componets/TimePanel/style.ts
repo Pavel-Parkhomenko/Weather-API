@@ -1,16 +1,15 @@
 import styled from 'styled-components'
 
-export const TimeContainerStyled = styled.div`
-
+export const TimeContainer = styled.div`
+  max-width: 600px;
 `
 export const TimeStyled = styled.div`
-  font-size: 70px;
   color: white;
   display: inline;
+  font-size: 50px;
 `
 
 export const TextStyled = styled.p`
   color: white;
   display: inline;
-  font-size: 40px;
 `

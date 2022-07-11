@@ -1,4 +1,14 @@
-export interface IWeatherDayState {
+import { TypeWeather } from '@/constants'
+
+export interface IParseLocation {
+  city: {
+    id: number,
+    name: string,
+  }
+  country: string
+}
+
+export interface IParseWeather {
   dt: number,
   main: {
     temp: number
@@ -6,7 +16,7 @@ export interface IWeatherDayState {
   weather: [
     {
       id: number,
-      main: string,
+      main: string | TypeWeather,
       description: string,
       icon: string
     }
@@ -15,7 +25,7 @@ export interface IWeatherDayState {
 }
 
 export interface IResponseApi {
-  list: IWeatherDayState[],
+  list: IParseWeather[],
   city: {
     id: number,
     name: string,
@@ -28,12 +38,24 @@ export interface IResponseApi {
 }
 
 export interface IWeatherState {
-  responseApi: IResponseApi | null,
+  weathers: IParseWeather[]
   loading: boolean,
   error: string,
 }
 
-export interface IAction {
+export interface IDispatchWeather {
   type: string,
-  payload: IResponseApi
+  payload?: IParseLocation | IParseWeather[] | string
+}
+
+export interface IGeolocation {
+  latitude: number,
+  longitude: number,
+  country_name: string
+}
+
+export interface IWeatherOneDay {
+  day: string,
+  temperature: number,
+  icon: string
 }

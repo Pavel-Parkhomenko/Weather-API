@@ -4,7 +4,7 @@ import { normalize } from 'styled-normalize'
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
   
-  *{
+  * {
     font-family: "Roboto", sans-serif;
     font-style: normal;
   }

@@ -1,27 +1,24 @@
-import React from 'react'
-import { HomeContainerStyled } from './style'
+import React, { useEffect } from 'react'
 import { Main } from '@/componets/Main'
+import { IGeolocation } from '@/interfaces'
+import { fetchWeatherByCoords } from '@/store/actions'
+import { useAppDispatch } from '@/hooks/useActions'
+import { useTypeSelector } from '@/hooks/useTypeSelector'
 
 export function Home() {
-  return (
-    <HomeContainerStyled>
-      <Main />
-    </HomeContainerStyled>
-  )
-}
+  const dispatch = useAppDispatch()
+  const { loading } = useTypeSelector(state => state.weatherReducer)
 
-/*
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch('https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=94a02e927f7a6862591f4816ff0872f9')
-        const data = await response.json()
-        console.log('data')
-        console.log(data)
-      } catch (err) {
-        console.log(err)
-      }
+      const response = await fetch('https://geolocation-db.com/json/')
+      const data: IGeolocation = await response.json()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      dispatch(fetchWeatherByCoords({ ...data }))
     }
     fetchData()
-  }, [])
- */
+  }, [dispatch])
+
+  return (loading ? <h1>Loading Weather</h1> : <Main />)
+}

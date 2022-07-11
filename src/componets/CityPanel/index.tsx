@@ -1,41 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
 import {
   CityContainerStyled,
-  ListInputStyled
+  CountryStyled,
+  InputStyled,
+  InputContainer,
 } from './style'
-import { fetchWeatherByCoords } from '@/store/actions'
+import { useTypeSelector } from '@/hooks/useTypeSelector'
+import { useAppDispatch } from '@/hooks/useActions'
+import { fetchWeatherByCity } from '@/store/actions'
+import search from '@/@types/svg/search.svg'
 
 export function CityPanel() {
-  const [geolocation, setGeolocation] = useState<{lat?: number, lon?: number}>({})
-  const dispatch = useDispatch()
-  const city = useSelector((state: any) => state.locationReducer.city)
+  const city = useTypeSelector(state => state.locationReducer.city.name)
+  const country = useTypeSelector(state => state.locationReducer.country)
+  const [cityInput, setCityInput] = useState(city)
+  const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setGeolocation({
-        lat: position.coords.latitude,
-        lon: position.coords.longitude
-      })
-    })
-  }, [])
+  const handleKeyEnter = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      // @ts-ignore
+      dispatch(fetchWeatherByCity(cityInput))
+    }
+  }
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    dispatch(fetchWeatherByCoords(geolocation))
-  }, [dispatch, geolocation])
+  const handleOnClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLDivElement).id === 'search') {
+      // @ts-ignore
+      dispatch(fetchWeatherByCity(cityInput))
+    }
+  }
 
   return (
     <CityContainerStyled>
-      <input type="text" value={city} list="mycoollist" />
-      <datalist id="mycoollist">
-        <option>i want to kill you</option>
-        <option>i will kill you</option>
-        <option>you will die</option>
-        <option>i will be killed</option>
-        <option>i will be dead</option>
-      </datalist>
+      <InputContainer
+        id="search"
+        onClick={handleOnClick}
+        onKeyDown={handleKeyEnter}
+      >
+        <InputStyled
+          type="text"
+          value={cityInput}
+          onChange={(event) => setCityInput(event.target.value)}
+        />
+      </InputContainer>
+      <CountryStyled>
+        {country}
+      </CountryStyled>
     </CityContainerStyled>
   )
 }
