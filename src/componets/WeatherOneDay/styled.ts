@@ -79,4 +79,9 @@ export const TodayAndTemperature = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+
+  @media(max-width: 320px) {
+    height: 60px;
+    font-size: 14px;
+  }
 `
