@@ -7,10 +7,12 @@ import thunk from 'redux-thunk'
 
 import { weatherReducer } from './weatherReducer'
 import { locationReducer } from './locationReducer'
+import { calendarReducer } from './calendarReducer'
 
 const rootReducer = combineReducers({
   weatherReducer,
-  locationReducer
+  locationReducer,
+  calendarReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))

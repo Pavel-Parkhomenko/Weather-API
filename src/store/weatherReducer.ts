@@ -29,7 +29,7 @@ export function weatherReducer(
         error: ''
       }
     case ADD_WEATHER_FAILED:
-      return { ...state, loading: false, error: 'Что-то пошло не так' }
+      return { ...state, loading: true, error: 'Что-то пошло не так' }
     default:
       return state
   }

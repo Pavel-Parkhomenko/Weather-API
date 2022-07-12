@@ -1,5 +1,29 @@
 import { TypeWeather } from '@/constants'
 
+interface IItemCalendar {
+  summary: string,
+  description: string,
+  id: string,
+  start: {
+    dateTime: string
+  },
+  end: {
+    dateTime: string,
+  },
+}
+
+export interface IResponseApiCalendar {
+  result: {
+    items: IItemCalendar[]
+  }
+}
+
+export interface IStateApiCalendar {
+  data: IResponseApiCalendar,
+  loading: boolean,
+  error: boolean,
+}
+
 export interface IParseLocation {
   city: {
     id: number,
@@ -46,6 +70,13 @@ export interface IWeatherState {
 export interface IDispatchWeather {
   type: string,
   payload?: IParseLocation | IParseWeather[] | string
+}
+
+export interface IDispatchCalendar {
+  type: string,
+  payload?: {
+    data: IResponseApiCalendar
+  }
 }
 
 export interface IGeolocation {

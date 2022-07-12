@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import {
-  CityContainerStyled,
-  CountryStyled,
-  InputStyled,
+  Container,
+  Country,
+  Input,
   InputContainer,
 } from './style'
 import { useTypeSelector } from '@/hooks/useTypeSelector'
@@ -31,21 +31,21 @@ export function CityPanel() {
   }
 
   return (
-    <CityContainerStyled>
+    <Container>
       <InputContainer
         id="search"
         onClick={handleOnClick}
         onKeyDown={handleKeyEnter}
       >
-        <InputStyled
+        <Input
           type="text"
           value={cityInput}
           onChange={(event) => setCityInput(event.target.value)}
         />
       </InputContainer>
-      <CountryStyled>
+      <Country>
         {country}
-      </CountryStyled>
-    </CityContainerStyled>
+      </Country>
+    </Container>
   )
 }

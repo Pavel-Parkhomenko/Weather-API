@@ -4,10 +4,19 @@ import {
   ADD_WEATHER_SUCCESS,
   ADD_WEATHER_FAILED,
   ADD_LOCATION,
+  ADD_DATA_CALENDAR,
+  ADD_DATA_CALENDAR_SUCCESS,
+  ADD_DATA_CALENDAR_FAILED,
   KEY
 } from '@/constants'
 import { parseApiResponse } from '@/helpers/parseApiResponse'
-import { IDispatchWeather, IGeolocation } from '@/interfaces'
+import {
+  IDispatchCalendar,
+  IDispatchWeather,
+  IGeolocation,
+  IResponseApiCalendar
+} from '@/interfaces'
+import { apiCalendar } from '@/helpers'
 
 export const fetchWeatherByCoords = ({
   latitude, longitude, country_name
@@ -59,5 +68,24 @@ export const fetchWeatherByCity = (city: string) => async (dispatch: Dispatch<ID
     dispatch({ type: ADD_WEATHER_SUCCESS, payload: weathers })
   } catch (err) {
     dispatch({ type: ADD_WEATHER_FAILED, payload: 'Что-то пошло не так' })
+  }
+}
+
+// eslint-disable-next-line max-len
+export const fetchDataCalendar = () => async (dispatch: Dispatch<IDispatchCalendar>) => {
+  try {
+    dispatch({ type: ADD_DATA_CALENDAR })
+    // const response: IResponseApiCalendar = apiCalendar.listEvents({
+    //   timeMin: new Date().toISOString(),
+    //   timeMax: '2022-07-12T00:00:00.001Z',
+    //   showDeleted: true,
+    //   maxResults: 3,
+    //   orderBy: 'updated'
+    // })
+    const response = await apiCalendar.listUpcomingEvents(3)
+    console.log(response)
+    dispatch({ type: ADD_DATA_CALENDAR_SUCCESS, payload: { data: response } })
+  } catch (err) {
+    dispatch({ type: ADD_DATA_CALENDAR_FAILED })
   }
 }
