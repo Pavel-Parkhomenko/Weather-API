@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react'
+import React, { Component, ReactNode } from 'react'
 
 interface IProps {
   children: ReactNode;
@@ -6,7 +6,6 @@ interface IProps {
 
 interface IState {
   error: null | Error;
-  errorInfo: null | ErrorInfo
 }
 
 export class ErrorBoundary extends Component<IProps, IState> {
@@ -14,14 +13,13 @@ export class ErrorBoundary extends Component<IProps, IState> {
     super(props)
     this.state = {
       error: null,
-      errorInfo: null
+
     }
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  componentDidCatch(error: Error) {
     this.setState({
       error,
-      errorInfo
     })
   }
 
