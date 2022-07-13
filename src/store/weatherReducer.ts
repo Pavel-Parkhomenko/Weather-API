@@ -20,7 +20,7 @@ export function weatherReducer(
 ) : IWeatherState {
   switch (action.type) {
     case ADD_WEATHER:
-      return { ...state, loading: true, error: '' }
+      return { ...state, loading: true }
     case ADD_WEATHER_SUCCESS:
       return {
         ...state,

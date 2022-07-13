@@ -8,6 +8,11 @@ import Clouds from '@/@types/img/clouds-2.jpg'
 import Snow from '@/@types/img/snow.jpg'
 import { TypeWeather } from '@/constants'
 
+const CONTAINER_HEIGHT = '100vh'
+const MAIN_HEIGHT = '80%'
+const MAIN_WIDTH = '100%'
+const MAIN_MAX_WIDTH = '900px'
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -16,7 +21,7 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 100vh;
+  height: ${CONTAINER_HEIGHT};
   
   @media(max-width: 518px) {
     background-image: url(${FontFrontMobile});
@@ -34,14 +39,16 @@ export const MainStyled = styled.div<{typeWeather: keyof typeof TypeWeather | 'D
       default: return FontFront
     }
   }});
-  height: 80%;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 75px 0 75px;
+  height: ${MAIN_HEIGHT};
+  width: ${MAIN_WIDTH};
+  max-width: ${MAIN_MAX_WIDTH};
+  margin-left: ${({ theme }) => theme.spaces[6] + 10}px;
+  margin-right: ${({ theme }) => theme.spaces[6] + 10}px;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-position-x: 100%;
   
   @media(max-height: 705px) {
     height: 100%;
@@ -57,7 +64,6 @@ export const TimeAndEventsContainerStyled = styled.div`
 export const TopMainContainerStyled = styled.div`
   display: flex;
   padding: 10% 10% 0 10%;
-  justify-content: space-between;
   flex-direction: column;
 
   @media(max-width: 992px) {

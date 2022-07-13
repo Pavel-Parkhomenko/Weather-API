@@ -1,5 +1,15 @@
 import styled, { css } from 'styled-components'
 
+const ICON_TODAY_WIDTH = '100px'
+const ICON_TODAY_HEIGHT = '130px'
+const ICON_TODAY_WIDTH_MEDIA = '80px'
+const ICON_TODAY_HEIGHT_MEDIA = '110px'
+const ICON_WIDTH = '80px'
+const ICON_HEIGHT = '80px'
+const ICON_WIDTH_MEDIA = '60px'
+const ICON_HEIGHT_MEDIA = '50px'
+const TODAY_AND_TEMPERATURE_HEIGHT = '82px'
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,36 +17,26 @@ export const Container = styled.div`
   justify-content: center;
 `
 
-export const DayContainer = styled.div`
-  width: 50px;
-  display: inline-block;
-  padding: 3px 0 3px 0;
-  color: white;
-  background-color: #3a4250;
-  border-radius: 50px;
-  font-size: 14px;
-  text-align: center;
-`
-
 export const Icon = styled.div<{iconUrl: string, isToday?: boolean}>`
   ${({ isToday }) => (isToday ? css`
-    width: 100px;
-    height: 130px;
+    width: ${ICON_TODAY_WIDTH};
+    height: ${ICON_TODAY_HEIGHT};
   ` : css`
-    width: 80px;
-    height: 80px;
+    width: ${ICON_WIDTH};
+    height: ${ICON_HEIGHT};
   `)}
-  margin: 10px 0 10px 0;
+  margin-top: ${({ theme }) => theme.spaces[3]}px;
+  margin-bottom: ${({ theme }) => theme.spaces[3]}px;
   background: url(${({ iconUrl }) => iconUrl}) no-repeat 50% 50%;
   background-size: cover;
   
   @media(max-width: 968px){
     ${({ isToday }) => (isToday ? css`
-    width: 80px;
-    height: 110px;
+    width: ${ICON_TODAY_WIDTH_MEDIA};
+    height: ${ICON_TODAY_HEIGHT_MEDIA};
   ` : css`
-    width: 60px;
-    height: 50px;
+    width: ${ICON_WIDTH_MEDIA};
+    height: ${ICON_HEIGHT_MEDIA};
   `)}
   }
   
@@ -60,9 +60,11 @@ export const TodayContainer = styled.div`
   @media(max-width: 568px) {
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
+    margin-top: ${({ theme }) => theme.spaces[3] - 2}px;
+    
     & > div:first-child {
       margin-top: 0;
-      margin-bottom: 30px;
     }
   }
 `
@@ -71,17 +73,21 @@ export const TodayAndTemperature = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 60%;
-  font-size: 30px;
+  height: ${TODAY_AND_TEMPERATURE_HEIGHT};
+  font-size: ${({ theme }) => theme.fontSizes[5]}px;
+  
+  & > div:first-child {
+    margin-bottom: ${({ theme }) => theme.spaces[2]}px;
+}
   
   @media(max-width: 568px) {
-    height: 90px;
+    //height: 90px;
     align-items: center;
     justify-content: space-between;
   }
 
   @media(max-width: 320px) {
-    height: 60px;
-    font-size: 14px;
+    //height: 60px;
+    font-size: ${({ theme }) => theme.fontSizes[1]}px;
   }
 `

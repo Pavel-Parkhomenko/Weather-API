@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
-export const TimeContainer = styled.div`
-  max-width: 600px;
+const CONTAINER_MAX_WIDTH = '600px'
+
+export const Container = styled.div`
+  max-width: ${CONTAINER_MAX_WIDTH};
+  color: ${({ theme }) => theme.textColor.light};
 `
 export const TimeStyled = styled.div`
-  color: white;
   display: inline;
-  font-size: 50px;
+  font-size: ${({ theme }) => theme.fontSizes[7]}px;
 `
 
-export const TextStyled = styled.p`
-  color: white;
-  display: inline;
+export const TextStyled = styled.span`
 `

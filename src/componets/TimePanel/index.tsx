@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
   TextStyled,
-  TimeContainer,
+  Container,
   TimeStyled
 } from './style'
 import { Months, Days } from '@/constants'
@@ -35,7 +35,7 @@ export function TimePanel() {
   }, [])
 
   return (
-    <TimeContainer>
+    <Container>
       <TimeStyled>
         {timeNow.hours}
       </TimeStyled>
@@ -50,6 +50,6 @@ export function TimePanel() {
           {`${Days[dateNow.day]}, ${dateNow.date} ${Months[dateNow.month]} ${dateNow.year}`}
         </TextStyled>
       </div>
-    </TimeContainer>
+    </Container>
   )
 }

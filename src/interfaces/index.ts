@@ -82,7 +82,6 @@ export interface IDispatchCalendar {
 export interface IGeolocation {
   latitude: number,
   longitude: number,
-  country_name: string
 }
 
 export interface IWeatherOneDay {

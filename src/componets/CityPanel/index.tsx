@@ -18,14 +18,12 @@ export function CityPanel() {
 
   const handleKeyEnter = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      // @ts-ignore
       dispatch(fetchWeatherByCity(cityInput))
     }
   }
 
   const handleOnClick = (e: React.MouseEvent) => {
     if ((e.target as HTMLDivElement).id === 'search') {
-      // @ts-ignore
       dispatch(fetchWeatherByCity(cityInput))
     }
   }

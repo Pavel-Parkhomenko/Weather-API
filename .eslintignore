@@ -1,2 +1,3 @@
 @types/*
 craco.config.js
+componets/ErrorBoundary/index.tsx

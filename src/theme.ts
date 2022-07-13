@@ -8,9 +8,12 @@ export const defaultTheme: DefaultTheme = {
     danger: '#d31111',
     warning: '#dcd929',
     dark: '#101215',
+    lightDark: '#4c4f54',
     light: '#fff',
   },
-  spaces: [0, 4, 8, 16, 24, 32, 64, 128],
+  //       0  1  2  3   4   5   6   7   8
+  spaces: [0, 4, 8, 16, 24, 32, 50, 64, 128],
+  //          0    1   2   3   4   5   6   7  8   9
   fontSizes: [12, 14, 16, 20, 24, 32, 40, 56, 72, 80],
   size: {
     little: 25,

@@ -14,6 +14,7 @@ export const Container = styled.div`
   text-align: right;
   max-width: ${MAX_WIDTH_CONTAINER};
   width: ${WIDTH_CONTAINER};
+  color: ${({ theme }) => theme.textColor.light};
 `
 
 export const InputContainer = styled.div`
@@ -31,13 +32,13 @@ export const InputContainer = styled.div`
   }
 `
 export const Input = styled.input`
-  font-size: 40px;
+  font-size: ${({ theme }) => theme.fontSizes[6]}px;
   background-color: inherit;
+  color: inherit;
   border: 0;
-  color: white;
   text-align: right;
   width: ${WIDTH_INPUT};
-  margin-right: 10px;
+  margin-right: ${({ theme }) => theme.spaces[2]}px;
   padding: 0;
   :active, :hover, :focus {
     outline: 0;
@@ -45,12 +46,11 @@ export const Input = styled.input`
   }
 
   @media(max-width: 768px) {
-    font-size: 30px;
+    font-size: ${({ theme }) => theme.fontSizes[5]}px;
   }
 `
 
 export const Country = styled.p`
-  color: white;
-  font-size: 16px;
-  margin: 0 45px 0 0;
+  font-size: ${({ theme }) => theme.fontSizes[2]}px;
+  margin-right: ${({ theme }) => theme.spaces[6] - 5}px;
 `

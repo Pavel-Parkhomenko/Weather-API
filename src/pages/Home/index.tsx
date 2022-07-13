@@ -1,24 +1,51 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { ThreeCircles } from 'react-loader-spinner'
 import { Main } from '@/componets/Main'
-import { IGeolocation } from '@/interfaces'
 import { fetchWeatherByCoords } from '@/store/actions'
 import { useAppDispatch } from '@/hooks/useActions'
 import { useTypeSelector } from '@/hooks/useTypeSelector'
+import { ContainerLoader } from './styled'
 
 export function Home() {
   const dispatch = useAppDispatch()
-  const { loading } = useTypeSelector(state => state.weatherReducer)
+  const { loading, error } = useTypeSelector(state => state.weatherReducer)
+  const [isError, setIsError] = useState('')
+
+  if (isError) {
+    throw Error(isError)
+  }
+  if (error) {
+    throw Error(error)
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://geolocation-db.com/json/')
-      const data: IGeolocation = await response.json()
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      dispatch(fetchWeatherByCoords({ ...data }))
+    const getLocation = async () => {
+      try {
+        const response = await fetch('https://api.ipgeolocation.io/ipgeo?apiKey=b76eb0deed054b03bfe659dfb1761024')
+        const data = await response.json()
+        await dispatch(fetchWeatherByCoords(data))
+      } catch (err) {
+        setIsError('Возникла проблема. Возможно вы не в сети')
+      }
     }
-    fetchData()
+    getLocation()
   }, [dispatch])
 
-  return (loading ? <h1>Loading Weather</h1> : <Main />)
+  return (
+    <>
+      { loading
+        ? (
+          <ContainerLoader>
+            <ThreeCircles
+              color="red"
+              outerCircleColor="blue"
+              middleCircleColor="green"
+              innerCircleColor="grey"
+            />
+          </ContainerLoader>
+        )
+        : null }
+      <Main />
+    </>
+  )
 }

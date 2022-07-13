@@ -13,28 +13,9 @@ import { parseApiResponse } from '@/helpers/parseApiResponse'
 import {
   IDispatchCalendar,
   IDispatchWeather,
-  IGeolocation,
-  IResponseApiCalendar
+  IGeolocation
 } from '@/interfaces'
 import { apiCalendar } from '@/helpers'
-
-export const fetchWeatherByCoords = ({
-  latitude, longitude, country_name
-}: IGeolocation) => async (dispatch: Dispatch<IDispatchWeather>) => {
-  try {
-    dispatch({ type: ADD_WEATHER })
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${KEY}`
-    )
-    const data = await response.json()
-    const { weathers, location } = parseApiResponse(data)
-    location.country = country_name
-    dispatch({ type: ADD_LOCATION, payload: location })
-    dispatch({ type: ADD_WEATHER_SUCCESS, payload: weathers })
-  } catch (err) {
-    dispatch({ type: ADD_WEATHER_FAILED, payload: 'Что-то пошло не так' })
-  }
-}
 
 const getLongNameCountry = async (shortName: string) => {
   const url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/country'
@@ -54,6 +35,24 @@ const getLongNameCountry = async (shortName: string) => {
   return data.suggestions[0].value
 }
 
+export const fetchWeatherByCoords = ({
+  latitude, longitude
+}: IGeolocation) => async (dispatch: Dispatch<IDispatchWeather>) => {
+  try {
+    dispatch({ type: ADD_WEATHER })
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${KEY}`
+    )
+    const data = await response.json()
+    const { weathers, location } = parseApiResponse(data)
+    location.country = await getLongNameCountry(location.country) as string
+    dispatch({ type: ADD_LOCATION, payload: location })
+    dispatch({ type: ADD_WEATHER_SUCCESS, payload: weathers })
+  } catch (err) {
+    dispatch({ type: ADD_WEATHER_FAILED, payload: 'Что-то пошло не так' })
+  }
+}
+
 // eslint-disable-next-line max-len
 export const fetchWeatherByCity = (city: string) => async (dispatch: Dispatch<IDispatchWeather>) => {
   try {
@@ -67,7 +66,7 @@ export const fetchWeatherByCity = (city: string) => async (dispatch: Dispatch<ID
     dispatch({ type: ADD_LOCATION, payload: location })
     dispatch({ type: ADD_WEATHER_SUCCESS, payload: weathers })
   } catch (err) {
-    dispatch({ type: ADD_WEATHER_FAILED, payload: 'Что-то пошло не так' })
+    dispatch({ type: ADD_WEATHER_FAILED })
   }
 }
 
@@ -75,15 +74,7 @@ export const fetchWeatherByCity = (city: string) => async (dispatch: Dispatch<ID
 export const fetchDataCalendar = () => async (dispatch: Dispatch<IDispatchCalendar>) => {
   try {
     dispatch({ type: ADD_DATA_CALENDAR })
-    // const response: IResponseApiCalendar = apiCalendar.listEvents({
-    //   timeMin: new Date().toISOString(),
-    //   timeMax: '2022-07-12T00:00:00.001Z',
-    //   showDeleted: true,
-    //   maxResults: 3,
-    //   orderBy: 'updated'
-    // })
     const response = await apiCalendar.listUpcomingEvents(3)
-    console.log(response)
     dispatch({ type: ADD_DATA_CALENDAR_SUCCESS, payload: { data: response } })
   } catch (err) {
     dispatch({ type: ADD_DATA_CALENDAR_FAILED })
