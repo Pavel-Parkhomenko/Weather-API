@@ -51,6 +51,13 @@ export const MessageLoading = styled.p`
   font-size: ${({ theme }) => theme.fontSizes[2]}px;;
   cursor: pointer;
   color: ${({ theme }) => theme.textColor.white};
+  user-select: none;
+  width: 200px;
+  border: 1px solid transparent;
+  
+  :hover {
+    border: 1px dashed gray;
+  }
 `
 
 export const SpanTextStyled = styled.p`
