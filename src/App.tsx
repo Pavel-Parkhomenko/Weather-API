@@ -13,8 +13,8 @@ const HOME_ROUTE = '/'
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
       <ErrorBoundary>
-        <GlobalStyle />
         <Provider store={store}>
           <HashRouter>
             <Routes>

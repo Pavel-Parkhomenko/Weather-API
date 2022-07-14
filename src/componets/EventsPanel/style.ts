@@ -48,7 +48,7 @@ export const SingInGoogle = styled.button`
 `
 
 export const MessageLoading = styled.p`
-  font-size: ${({ theme }) => theme.fontSizes[2]}px;;
+  font-size: ${({ theme }) => theme.fontSizes[2]}px;
   cursor: pointer;
   color: ${({ theme }) => theme.textColor.white};
   user-select: none;

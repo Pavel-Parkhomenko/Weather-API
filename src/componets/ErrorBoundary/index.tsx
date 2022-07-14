@@ -1,4 +1,8 @@
 import React, { Component, ReactNode } from 'react'
+import {
+  ButtonToBack,
+  Container, Message
+} from '@/componets/ErrorBoundary/styled'
 
 interface IProps {
   children: ReactNode;
@@ -13,7 +17,6 @@ export class ErrorBoundary extends Component<IProps, IState> {
     super(props)
     this.state = {
       error: null,
-
     }
   }
 
@@ -23,11 +26,29 @@ export class ErrorBoundary extends Component<IProps, IState> {
     })
   }
 
+  handleToBack = () => {
+    this.setState({
+      error: null
+    })
+    window.location.reload()
+  }
+
   render() {
     const { error } = this.state
     const { children } = this.props
     if (error) {
-      return <h1>{ error.message }</h1>
+      return (
+        <Container>
+          { error.message.split('.').map((message) => (
+            <Message key={message}>
+              { message }
+            </Message>
+          )) }
+          <ButtonToBack onClick={() => this.handleToBack()}>
+            Перезагрузить страницу
+          </ButtonToBack>
+        </Container>
+      )
     }
 
     return children
