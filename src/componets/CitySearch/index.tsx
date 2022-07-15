@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import AsyncSelect from 'react-select/async'
 import { KEY } from '@/constants'
 import { Container } from '@/componets/CitySearch/styled'
@@ -19,12 +19,17 @@ const customStyles = {
   })
 }
 
-export function CitySearch() {
+export function CitySearch({ nameCity }: { nameCity: string }) {
   const dispatch = useAppDispatch()
+  const [valueSelect, serValueSelect] = useState({ value: nameCity, label: nameCity })
+
+  useEffect(() => {
+    serValueSelect({ value: nameCity, label: nameCity })
+  }, [nameCity])
 
   const promiseOptions = async (inputValue: string): Promise<IAsyncSelect[]> => {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${KEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${KEY}`
     )
     const data = await response.json()
     return data.map((item: { name: string }) => ({ value: item.name, label: item.name }))
@@ -34,14 +39,21 @@ export function CitySearch() {
     if (value) dispatch(fetchWeatherByCity(value.value))
   }
 
+  const handleInputChange = (newValue: string) => {
+    serValueSelect({ value: newValue, label: newValue })
+    return newValue
+  }
+
   return (
     <Container>
       <AsyncSelect
         cacheOptions
         defaultOptions
+        value={valueSelect}
         loadOptions={promiseOptions}
         onChange={handleSelect}
         noOptionsMessage={() => null}
+        onInputChange={handleInputChange}
         styles={customStyles}
         theme={(theme) => ({
           ...theme,

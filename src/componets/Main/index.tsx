@@ -15,6 +15,7 @@ import { TypeWeather } from '@/constants'
 
 export function Main() {
   const { weathers } = useTypeSelector(state => state.weatherReducer)
+  const nameCity = useTypeSelector(state => state.locationReducer.city.name)
 
   return (
     <Container>
@@ -22,7 +23,7 @@ export function Main() {
         typeWeather={weathers.length === 0 ? 'Default' : weathers[0].weather[0].main as TypeWeather}
       >
         <TopMainContainerStyled>
-          <CitySearch />
+          <CitySearch nameCity={nameCity} />
           <TimeAndEventsContainerStyled>
             <TimePanel />
             <CityPanel />
