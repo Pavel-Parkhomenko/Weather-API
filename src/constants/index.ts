@@ -17,6 +17,7 @@ export const ADD_DATA_CALENDAR_SUCCESS = 'ADD_DATA_CALENDAR_SUCCESS'
 export const ADD_DATA_CALENDAR_FAILED = 'ADD_DATA_CALENDAR_FAILED'
 
 export const KEY = '94a02e927f7a6862591f4816ff0872f9'
+export const KEY_GEOLOCATION = 'b76eb0deed054b03bfe659dfb1761024'
 
 export enum TypeWeather {
   Clear = 'Clear',

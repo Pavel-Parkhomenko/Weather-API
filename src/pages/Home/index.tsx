@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { ThreeCircles } from 'react-loader-spinner'
 import { Main } from '@/componets/Main'
 import { fetchWeatherByCoords } from '@/store/actions'
-import { useAppDispatch } from '@/hooks/useActions'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { useTypeSelector } from '@/hooks/useTypeSelector'
 import { ContainerLoader } from './styled'
+import { KEY_GEOLOCATION } from '@/constants'
 
 export function Home() {
   const dispatch = useAppDispatch()
@@ -21,14 +22,17 @@ export function Home() {
   useEffect(() => {
     const getLocation = async () => {
       try {
-        const response = await fetch('https://api.ipgeolocation.io/ipgeo?apiKey=b76eb0deed054b03bfe659dfb1761024')
+        const response = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${KEY_GEOLOCATION}`)
         const data = await response.json()
         await dispatch(fetchWeatherByCoords(data))
       } catch (err) {
         setIsError('Возникла проблема. Возможно вы не в сети')
       }
     }
-    getLocation()
+    const localStorageData = localStorage.getItem('persist:weather')
+    if (!localStorageData) {
+      getLocation()
+    }
   }, [dispatch])
 
   return (

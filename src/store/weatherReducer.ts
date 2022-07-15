@@ -7,7 +7,7 @@ import {
 
 const INITIAL_STATE: IWeatherState = {
   weathers: [],
-  loading: true,
+  loading: false,
   error: '',
 }
 
@@ -30,7 +30,7 @@ export function weatherReducer(
       }
     case ADD_WEATHER_FAILED:
       return {
-        ...state, loading: true, error: `Что-то пошло не так.
+        ...state, loading: false, error: `Что-то пошло не так.
         Возможно вы ввели несуществующий город`
       }
     default:

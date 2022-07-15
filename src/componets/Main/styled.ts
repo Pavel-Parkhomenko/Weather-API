@@ -63,10 +63,10 @@ export const TimeAndEventsContainerStyled = styled.div`
 
 export const TopMainContainerStyled = styled.div`
   display: flex;
-  padding: 10% 10% 0 10%;
+  padding: 0 10% 0 10%;
   flex-direction: column;
 
   @media(max-width: 992px) {
-    padding: 10% 5% 0 5%;
+    padding: 0 5% 0 5%;
   }
 `

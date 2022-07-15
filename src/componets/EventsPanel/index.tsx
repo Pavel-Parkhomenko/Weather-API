@@ -6,9 +6,9 @@ import {
   SingInGoogle,
   MessageLoading,
   SpanTextStyled
-} from './style'
+} from './styled'
 import { useTypeSelector } from '@/hooks/useTypeSelector'
-import { useAppDispatch } from '@/hooks/useActions'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { fetchDataCalendar } from '@/store/actions'
 import { apiCalendar } from '@/helpers'
 

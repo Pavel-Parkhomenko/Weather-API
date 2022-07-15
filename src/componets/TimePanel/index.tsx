@@ -3,7 +3,7 @@ import {
   TextStyled,
   Container,
   TimeStyled
-} from './style'
+} from './styled'
 import { Months, Days } from '@/constants'
 
 export function TimePanel() {

@@ -17,7 +17,7 @@ export function locationReducer(
 ) {
   switch (action.type) {
     case ADD_LOCATION:
-      return { ...state, ...action.payload }
+      return { ...state, ...action.payload, city: action.payload.city }
     default:
       return state
   }

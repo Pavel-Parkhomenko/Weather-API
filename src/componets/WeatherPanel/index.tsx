@@ -2,11 +2,9 @@ import React from 'react'
 import { Container } from '@/componets/WeatherPanel/styled'
 import { WeatherOneDay } from '@/componets/WeatherOneDay'
 import { ShortDays } from '@/constants'
-import { useTypeSelector } from '@/hooks/useTypeSelector'
+import { IParseWeather } from '@/interfaces'
 
-export function WeatherPanel() {
-  const weathers = useTypeSelector(state => state.weatherReducer.weathers)
-
+export function WeatherPanel({ weathers }: {weathers: IParseWeather[]}) {
   return (
     <Container>
       {weathers.map(({ dt, weather, main }, ind) => (

@@ -49,12 +49,13 @@ export const fetchWeatherByCoords = ({
     dispatch({ type: ADD_LOCATION, payload: location })
     dispatch({ type: ADD_WEATHER_SUCCESS, payload: weathers })
   } catch (err) {
-    dispatch({ type: ADD_WEATHER_FAILED, payload: 'Что-то пошло не так' })
+    dispatch({ type: ADD_WEATHER_FAILED })
   }
 }
 
-// eslint-disable-next-line max-len
-export const fetchWeatherByCity = (city: string) => async (dispatch: Dispatch<IDispatchWeather>) => {
+export const fetchWeatherByCity = (city: string) => async (
+  dispatch: Dispatch<IDispatchWeather>
+) => {
   try {
     dispatch({ type: ADD_WEATHER })
     const response = await fetch(
@@ -70,8 +71,9 @@ export const fetchWeatherByCity = (city: string) => async (dispatch: Dispatch<ID
   }
 }
 
-// eslint-disable-next-line max-len
-export const fetchDataCalendar = () => async (dispatch: Dispatch<IDispatchCalendar>) => {
+export const fetchDataCalendar = () => async (
+  dispatch: Dispatch<IDispatchCalendar>
+) => {
   try {
     dispatch({ type: ADD_DATA_CALENDAR })
     const response = await apiCalendar.listUpcomingEvents(3)
