@@ -1,9 +1,4 @@
 import styled from 'styled-components'
-import AsyncSelect from 'react-select/async'
-
-export const AsyncSelectStyled = styled(AsyncSelect)`
-  background-color: green;
-`
 
 export const Container = styled.div`
   margin-top: 15px;

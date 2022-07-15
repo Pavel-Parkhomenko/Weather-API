@@ -19,7 +19,7 @@ const rootPersistConfig = {
 }
 
 const weatherPersistConfig = {
-  key: 'weather',
+  key: 'weathers',
   storage,
   blacklist: ['error', 'loading']
 }

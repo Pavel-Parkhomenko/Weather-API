@@ -29,7 +29,7 @@ export function Home() {
         setIsError('Возникла проблема. Возможно вы не в сети')
       }
     }
-    const localStorageData = localStorage.getItem('persist:weather')
+    const localStorageData = localStorage.getItem('persist:weathers')
     if (!localStorageData) {
       getLocation()
     }

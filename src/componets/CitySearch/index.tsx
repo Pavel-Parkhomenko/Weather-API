@@ -21,6 +21,7 @@ const customStyles = {
 
 export function CitySearch() {
   const dispatch = useAppDispatch()
+
   const promiseOptions = async (inputValue: string): Promise<IAsyncSelect[]> => {
     const response = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${KEY}`

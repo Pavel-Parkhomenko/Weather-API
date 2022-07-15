@@ -14,12 +14,12 @@ import { useTypeSelector } from '@/hooks/useTypeSelector'
 import { TypeWeather } from '@/constants'
 
 export function Main() {
-  const { loading, weathers } = useTypeSelector(state => state.weatherReducer)
+  const { weathers } = useTypeSelector(state => state.weatherReducer)
 
   return (
     <Container>
       <MainStyled
-        typeWeather={loading ? 'Default' : weathers[0].weather[0].main as TypeWeather}
+        typeWeather={weathers.length === 0 ? 'Default' : weathers[0].weather[0].main as TypeWeather}
       >
         <TopMainContainerStyled>
           <CitySearch />
