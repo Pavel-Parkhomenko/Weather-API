@@ -1,4 +1,4 @@
-# Toast Lib
+# Weather app
 Weather viewing apps with a choice of any city
 
 ## Some information about the implementation
