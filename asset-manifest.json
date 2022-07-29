@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/Weather-API-Task/static/js/main.8567dda7.js",
-    "static/media/snow.jpg": "/Weather-API-Task/static/media/snow.7ff70ad871d27d9c0415.jpg",
-    "static/media/fon-mobile.jpg": "/Weather-API-Task/static/media/fon-mobile.6a5a6d0b27d82cf8f8c7.jpg",
-    "static/media/fon-3.jpg": "/Weather-API-Task/static/media/fon-3.c1a81da51ed5f3ffa643.jpg",
-    "static/media/clear.jpg": "/Weather-API-Task/static/media/clear.6c4f5c7aceaadb502228.jpg",
-    "static/media/clouds-2.jpg": "/Weather-API-Task/static/media/clouds-2.b91ffecfe20cbae9b57e.jpg",
-    "static/media/rain.jpg": "/Weather-API-Task/static/media/rain.86ca63c4251da4bdb381.jpg",
-    "static/media/extreme.jpg": "/Weather-API-Task/static/media/extreme.bcb04b6ea05f7ce614ce.jpg",
-    "static/media/google.svg": "/Weather-API-Task/static/media/google.dbea7bf34894a628bba72da97120abd1.svg",
-    "index.html": "/Weather-API-Task/index.html",
-    "main.8567dda7.js.map": "/Weather-API-Task/static/js/main.8567dda7.js.map"
+    "main.js": "/Weather-API/static/js/main.d5639040.js",
+    "static/media/snow.jpg": "/Weather-API/static/media/snow.7ff70ad871d27d9c0415.jpg",
+    "static/media/fon-mobile.jpg": "/Weather-API/static/media/fon-mobile.6a5a6d0b27d82cf8f8c7.jpg",
+    "static/media/fon-3.jpg": "/Weather-API/static/media/fon-3.c1a81da51ed5f3ffa643.jpg",
+    "static/media/clear.jpg": "/Weather-API/static/media/clear.6c4f5c7aceaadb502228.jpg",
+    "static/media/clouds-2.jpg": "/Weather-API/static/media/clouds-2.b91ffecfe20cbae9b57e.jpg",
+    "static/media/rain.jpg": "/Weather-API/static/media/rain.86ca63c4251da4bdb381.jpg",
+    "static/media/extreme.jpg": "/Weather-API/static/media/extreme.bcb04b6ea05f7ce614ce.jpg",
+    "static/media/google.svg": "/Weather-API/static/media/google.dbea7bf34894a628bba72da97120abd1.svg",
+    "index.html": "/Weather-API/index.html",
+    "main.d5639040.js.map": "/Weather-API/static/js/main.d5639040.js.map"
   },
   "entrypoints": [
-    "static/js/main.8567dda7.js"
+    "static/js/main.d5639040.js"
   ]
 }
