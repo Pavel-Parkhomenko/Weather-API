@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/Weather-API/static/js/main.d5639040.js",
+    "main.js": "/Weather-API/static/js/main.ef490662.js",
     "static/media/snow.jpg": "/Weather-API/static/media/snow.7ff70ad871d27d9c0415.jpg",
     "static/media/fon-mobile.jpg": "/Weather-API/static/media/fon-mobile.6a5a6d0b27d82cf8f8c7.jpg",
     "static/media/fon-3.jpg": "/Weather-API/static/media/fon-3.c1a81da51ed5f3ffa643.jpg",
@@ -10,9 +10,9 @@
     "static/media/extreme.jpg": "/Weather-API/static/media/extreme.bcb04b6ea05f7ce614ce.jpg",
     "static/media/google.svg": "/Weather-API/static/media/google.dbea7bf34894a628bba72da97120abd1.svg",
     "index.html": "/Weather-API/index.html",
-    "main.d5639040.js.map": "/Weather-API/static/js/main.d5639040.js.map"
+    "main.ef490662.js.map": "/Weather-API/static/js/main.ef490662.js.map"
   },
   "entrypoints": [
-    "static/js/main.d5639040.js"
+    "static/js/main.ef490662.js"
   ]
 }
