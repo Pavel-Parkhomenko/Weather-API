@@ -8,7 +8,6 @@ const ICON_WIDTH = '80px'
 const ICON_HEIGHT = '80px'
 const ICON_WIDTH_MEDIA = '60px'
 const ICON_HEIGHT_MEDIA = '50px'
-const TODAY_AND_TEMPERATURE_HEIGHT = '82px'
 
 export const Container = styled.div<{isToday?: string}>`
   display: flex;
@@ -56,36 +55,4 @@ export const Temperature = styled.h2`
   font-weight: normal;
   padding: 0;
   margin: 0;
-`
-
-export const TodayContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  
-  background-color: blueviolet;
-
-  //@media(max-width: 568px) {
-  //  flex-direction: column-reverse;
-  //  align-items: center;
-  //  justify-content: center;
-  //}
-`
-
-export const TodayAndTemperature = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  //height: ${TODAY_AND_TEMPERATURE_HEIGHT};
-  font-size: ${({ theme }) => theme.fontSizes[5]}px;
-  
-  // & > div:first-child {
-  //   margin-bottom: ${({ theme }) => theme.spaces[2]}px;
-  // }
-  
-  @media(max-width: 568px) {
-    align-items: center;
-    justify-content: space-between;
-    font-size: ${({ theme }) => theme.fontSizes[2]}px;
-  }
 `
