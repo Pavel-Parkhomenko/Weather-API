@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { TimePoint } from '@/componets/TimePoint'
 import {
   Container,
-  TodayAndTemperature,
   Icon,
   Temperature,
-  TodayContainer
 } from '@/componets/WeatherOneDay/styled'
 import { IWeatherOneDay } from '@/interfaces'
 
@@ -21,28 +19,12 @@ export function WeatherOneDay({ day, temperature, icon }: IWeatherOneDay) {
       })
   }, [icon])
 
-  if (day === 'TODAY') {
-    return (
-      <TodayContainer>
-        <Icon iconUrl={iconUrl} isToday />
-        <TodayAndTemperature>
-          <TimePoint variant="day">
-            { day }
-          </TimePoint>
-          <Temperature>
-            { temperature }
-            °
-          </Temperature>
-        </TodayAndTemperature>
-      </TodayContainer>
-    )
-  }
   return (
-    <Container>
+    <Container isToday={day}>
       <TimePoint variant="day">
         { day }
       </TimePoint>
-      <Icon iconUrl={iconUrl} />
+      <Icon iconUrl={iconUrl} isToday />
       <Temperature>
         { temperature }
         °

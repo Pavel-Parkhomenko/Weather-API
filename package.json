@@ -2,7 +2,7 @@
   "name": "weather-app",
   "version": "1.0.0",
   "private": false,
-  "homepage": "https://Pavel-Parkhomenko.github.io/Weather-API-Task",
+  "homepage": "https://Pavel-Parkhomenko.github.io/Weather-API",
   "dependencies": {
     "@craco/craco": "^6.4.4",
     "@testing-library/jest-dom": "^5.16.4",

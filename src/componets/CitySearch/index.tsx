@@ -37,6 +37,7 @@ export function CitySearch({ nameCity }: { nameCity: string }) {
 
   const handleSelect = (value: IAsyncSelect | null) => {
     if (value) dispatch(fetchWeatherByCity(value.value))
+    else if (valueSelect) dispatch(fetchWeatherByCity(valueSelect.value))
   }
 
   const handleInputChange = (newValue: string) => {

@@ -6,6 +6,10 @@ export const Container = styled.div`
   justify-content: right;
   align-items: flex-end;
   color: ${({ theme }) => theme.textColor.light};
+
+  @media(max-width: 568px) {
+    align-items: center;
+  }
 `
 
 export const City = styled.h2`

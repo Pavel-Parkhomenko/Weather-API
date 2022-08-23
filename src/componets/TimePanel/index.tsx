@@ -36,15 +36,17 @@ export function TimePanel() {
 
   return (
     <Container>
-      <TimeStyled>
-        {timeNow.hours}
-      </TimeStyled>
-      <TimeStyled>
-        :
-      </TimeStyled>
-      <TimeStyled>
-        {timeNow.minutes}
-      </TimeStyled>
+      <div>
+        <TimeStyled>
+          {timeNow.hours}
+        </TimeStyled>
+        <TimeStyled>
+          :
+        </TimeStyled>
+        <TimeStyled>
+          {timeNow.minutes}
+        </TimeStyled>
+      </div>
       <div>
         <TextStyled>
           {`${Days[dateNow.day]}, ${dateNow.date} ${Months[dateNow.month]} ${dateNow.year}`}

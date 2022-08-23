@@ -53,12 +53,22 @@ export const MainStyled = styled.div<{typeWeather: keyof typeof TypeWeather | 'D
   @media(max-height: 705px) {
     height: 100%;
   }
+
+  @media(max-width: 568px) {
+    height: 80vh;
+  }
 `
 
 export const TimeAndEventsContainerStyled = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media(max-width: 568px) {
+    flex-direction: column;
+    align-items: center;
+    height: 175px;
+  }
 `
 
 export const TopMainContainerStyled = styled.div`

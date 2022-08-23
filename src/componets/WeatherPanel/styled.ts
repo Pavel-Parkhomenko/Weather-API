@@ -9,7 +9,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: ${({ theme }) => theme.spaces[5]}px;
   padding-right: ${({ theme }) => theme.spaces[5]}px;
   max-height: ${CONTAINER_MAX_HEIGHT};
   height: ${CONTAINER_HEIGHT};
